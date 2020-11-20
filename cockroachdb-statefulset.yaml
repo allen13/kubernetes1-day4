@@ -6,6 +6,7 @@ metadata:
   name: cockroachdb-public
   labels:
     app: cockroachdb
+    scrape: public
 spec:
   ports:
   # The main port, served by gRPC, serves Postgres-flavor SQL, internode
@@ -19,6 +20,22 @@ spec:
     name: http
   selector:
     app: cockroachdb
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: cockroachdb
+    team: frontend
+  name: prometheus-operator
+spec:
+  endpoints:
+  - port: http
+    path: /_status/vars
+  selector:
+    matchLabels:
+      app: cockroachdb
+      scrape: public
 ---
 apiVersion: route.openshift.io/v1
 kind: Route

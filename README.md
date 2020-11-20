@@ -92,6 +92,10 @@ Links
 deploy prometheus operator and prometheus
 -----------------------------------------
 
+modify `prometheus-operator-deployment.yaml` to only run in your namespace.
+
+    --namespaces=<mynamespace>
+
 start the operator
 
     oc apply -f prometheus-operator-deployment.yaml
