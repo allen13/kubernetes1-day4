@@ -96,6 +96,10 @@ run the prometheus crd
 
     kubectl apply -f prometheus.yaml
 
+add the cockroachdb service monitor
+
+    kubectl apply -f servicemonitor.yaml
+
 Navigate to the prometheus route to see prometheus running
 
 
