@@ -10,3 +10,18 @@ spec:
   serviceMonitorSelector:
     matchLabels:
       team: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-public
+  labels:
+    app: prometheus
+spec:
+  ports:
+  - port: 9090
+    targetPort: 9090
+    name: http
+  selector:
+    app: prometheus
+  type: LoadBalancer
