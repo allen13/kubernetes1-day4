@@ -87,7 +87,10 @@ Links
 
 deploy prometheus operator and prometheus
 -----------------------------------------
+create the crds
 
+    kubectl apply -f prometheus-operator-crd/
+    
 start the operator
 
     kubectl apply -f prometheus-operator-deployment.yaml
