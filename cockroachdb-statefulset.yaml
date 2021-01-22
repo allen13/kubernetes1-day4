@@ -21,39 +21,6 @@ spec:
   selector:
     app: cockroachdb
 ---
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    app: cockroachdb
-    team: frontend
-  name: prometheus-operator
-spec:
-  endpoints:
-  - port: http
-    path: /_status/vars
-  selector:
-    matchLabels:
-      app: cockroachdb
-      scrape: public
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  labels:
-    app: cockroachdb
-  name: cockroachdb
-spec:
-  port:
-    targetPort: 8080
-  to:
-    kind: Service
-    name: cockroachdb-public
-    weight: 100
-  tls:
-    termination: edge
-  wildcardPolicy: None
----
 apiVersion: v1
 kind: Service
 metadata:
