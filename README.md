@@ -43,22 +43,18 @@ Links
 install cockroachdb
 -------------------
 
-make sure to create your own namespace
-
-    oc new-project <my-name>
-
 apply the statefulset
 
-    oc apply -f cockroachdb-statefulset.yaml
+    kubectl apply -f cockroachdb-statefulset.yaml
 
 check the pods and pvcs that the statefulset will create
 
-    oc get pods
-    oc get pvc
+    kubectl get pods
+    kubectl get pvc
 
 initialized the database with the init job
 
-    oc apply -f cluster-init.yaml
+    kubectl apply -f cluster-init.yaml
 
 navigate to the included route to see cockroachdb dashboard
 
@@ -92,17 +88,13 @@ Links
 deploy prometheus operator and prometheus
 -----------------------------------------
 
-modify `prometheus-operator-deployment.yaml` to only run in your namespace.
-
-    --namespaces=<mynamespace>
-
 start the operator
 
-    oc apply -f prometheus-operator-deployment.yaml
+    kubectl apply -f prometheus-operator-deployment.yaml
 
 run the prometheus crd
 
-    oc apply -f prometheus.yaml
+    kubectl apply -f prometheus.yaml
 
 Navigate to the prometheus route to see prometheus running
 

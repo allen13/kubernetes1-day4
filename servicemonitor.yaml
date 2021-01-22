@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: cockroachdb
+    team: frontend
+  name: prometheus-operator
+spec:
+  endpoints:
+  - port: http
+    path: /_status/vars
+  selector:
+    matchLabels:
+      app: cockroachdb
+      scrape: public
