@@ -21,7 +21,6 @@ spec:
     spec:
       containers:
       - args:
-        - --namespaces=tallen
         - --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.43.2
         image: quay.io/prometheus-operator/prometheus-operator:v0.43.2
         name: prometheus-operator
